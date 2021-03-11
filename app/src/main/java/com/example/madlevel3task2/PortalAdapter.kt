@@ -1,20 +1,24 @@
 package com.example.madlevel3task2
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ExpandableListView
 import androidx.appcompat.view.menu.ActionMenuItemView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.madlevel3task2.databinding.ItemPortalBinding
 
-class PortalAdapter(private val portals: List<Portal>) : RecyclerView.Adapter<PortalAdapter.ViewHolder>() {
+class PortalAdapter(private val portals: List<Portal>, private val clickListener: (Portal) -> Unit) : RecyclerView.Adapter<PortalAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         private val binding = ItemPortalBinding.bind(itemView)
 
-        fun dataBind(portal: Portal) {
-            binding.tvPortal.text = portal.portalText
+        fun dataBind(portal: Portal, clickListener: (Portal) -> Unit) {
+            //TODO: Add prefix to portalUrlText.
+            binding.tvPortalTitle.text = portal.portalText
+            binding.tvPortalUrl.text = portal.portalUrlText
         }
     }
 
@@ -29,6 +33,8 @@ class PortalAdapter(private val portals: List<Portal>) : RecyclerView.Adapter<Po
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.dataBind(portals[position])
+        // Populate ViewHolder with data that corresponds to the position in the list
+        // which we are told to load
+        holder.dataBind(portals[position], clickListener)
     }
 }
