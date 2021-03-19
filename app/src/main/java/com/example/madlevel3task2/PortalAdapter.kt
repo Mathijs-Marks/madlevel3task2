@@ -16,9 +16,10 @@ class PortalAdapter(private val portals: List<Portal>, private val clickListener
         private val binding = ItemPortalBinding.bind(itemView)
 
         fun dataBind(portal: Portal, clickListener: (Portal) -> Unit) {
-            //TODO: Add prefix to portalUrlText.
+
             binding.tvPortalTitle.text = portal.portalText
             binding.tvPortalUrl.text = portal.portalUrlText
+            itemView.setOnClickListener { clickListener(portal) }
         }
     }
 

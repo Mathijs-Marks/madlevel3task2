@@ -4,7 +4,7 @@
     <!-- Strings used for fragments for navigation -->
     <string name="add_portal_title_hint">Title</string>
     <string name="add_url_hint">Url</string>
-    <string name="add_url_prefix">http://</string>
+    <string name="add_url_prefix">https://</string>
     <string name="add_portal_button">Add Portal</string>
     <string name="not_valid_portal">Please fill in both fields!</string>
 </resources>

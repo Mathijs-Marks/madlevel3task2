@@ -1,5 +1,6 @@
 package com.example.madlevel3task2
 
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -7,6 +8,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.browser.customtabs.CustomTabsIntent
+import androidx.browser.customtabs.CustomTabsIntent.Builder
 import androidx.fragment.app.setFragmentResultListener
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.madlevel3task2.databinding.FragmentPortalsBinding
@@ -61,6 +64,10 @@ class PortalsFragment : Fragment() {
     }
 
     private fun portalItemClicked(portal: Portal) {
-        Toast.makeText(activity, "Clicked: ${portal.portalText}", Toast.LENGTH_LONG).show()
+        //Toast.makeText(activity, "Clicked: ${portal.portalText}", Toast.LENGTH_LONG).show()
+        val builder = CustomTabsIntent.Builder()
+        val customTabIntent = builder.build()
+        context?.let { customTabIntent.launchUrl(it, Uri.parse(portal.portalUrlText)) }
+        // TODO: Uitleg vragen!!
     }
 }

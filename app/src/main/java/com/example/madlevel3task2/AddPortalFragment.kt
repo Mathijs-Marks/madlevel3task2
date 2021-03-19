@@ -46,8 +46,7 @@ class AddPortalFragment : Fragment() {
     }
 
     private fun onAddPortal() {
-        val portal = Portal(binding.etPortalTitle.text.toString(), binding.etPortalUrl.text.toString())
-
+        val portal = Portal(binding.etPortalTitle.text.toString(), getString(R.string.add_url_prefix) + binding.etPortalUrl.text.toString())
 
         if (portal.portalText!!.isNotBlank() && portal.portalUrlText!!.isNotBlank()) {
             // Set the data as fragmentResult, we are listening for REQ_PORTAL_KEY in PortalsFragment!
